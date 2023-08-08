@@ -1,0 +1,9 @@
+@import "./sass/main.scss";
+@import "./sass/base/mixins";
+@import "./sass/base/variables";
+
+.container {
+  @include flexJustifyStart;
+  width: 100vw;
+  height: 100vh;
+}
