@@ -12,7 +12,6 @@ function Card() {
       const response = await axios.get(
         `https://api.coingecko.com/api/v3/coins/${selectedID}`
       );
-      console.log("coin", response);
       setCryptoData(response?.data);
       // const formattedData = response?.data.map((item: any) => {
       //   return {

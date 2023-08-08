@@ -8,6 +8,8 @@ import { MyContext } from "./context/context";
 
 function App() {
   const [cryptos, setCryptos] = useState<ListCardData[]>([]);
+  const [cryptos2, setCryptos2] = useState<ListCardData[]>([]);
+  const [userEnteredTerm, setUserEnteredTerm] = useState<string>("");
   const [selectedID, setSelectedID] = useState<string>("");
 
   const fetchCryptoData = async () => {
@@ -39,10 +41,25 @@ function App() {
     fetchCryptoData();
   }, []);
 
+  const SearchCoinsWithName = (name: string) => {
+    const SearchedCoins = cryptos?.filter((item: ListCardData) =>
+      item?.name?.toLowerCase().includes(name.toLowerCase())
+    );
+    setCryptos2(SearchedCoins);
+  };
+
+  useEffect(() => {
+    SearchCoinsWithName(userEnteredTerm);
+  }, [userEnteredTerm]);
+
   return (
     <MyContext.Provider value={{ selectedID, setSelectedID }}>
       <div className="container">
-        <Sidebar cryptos={cryptos} />
+        <Sidebar
+          cryptos={cryptos2.length > 0 ? cryptos2 : cryptos}
+          setUserEnteredTerm={setUserEnteredTerm}
+          userEnteredTerm={userEnteredTerm}
+        />
         <MainContent />
       </div>
     </MyContext.Provider>

@@ -6,10 +6,15 @@ import { ListCardData } from "../../types/types";
 
 interface SidebarProps {
   cryptos: ListCardData[];
+  setUserEnteredTerm: (value: string) => void;
+  userEnteredTerm: string;
 }
 
-const Sidebar = ({ cryptos }: SidebarProps) => {
-  const [searchTerm, setSearchTerm] = useState<string>("");
+const Sidebar = ({
+  cryptos,
+  setUserEnteredTerm,
+  userEnteredTerm,
+}: SidebarProps) => {
   return (
     <div className="sidebar__container">
       <div className="sidebar__container--header">
@@ -22,9 +27,9 @@ const Sidebar = ({ cryptos }: SidebarProps) => {
         <input
           type="text"
           placeholder="search"
-          value={searchTerm}
+          value={userEnteredTerm}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setSearchTerm(e?.target?.value)
+            setUserEnteredTerm(e?.target?.value)
           }
         />
       </div>
