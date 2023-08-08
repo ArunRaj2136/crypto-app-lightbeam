@@ -1,8 +1,28 @@
 @import "../../sass/base/variables";
+@import "../../sass/base/mixins";
 
 .main__container {
   width: calc(100vw - 248px);
   background-color: $color-white;
   border-radius: 4px;
   border: 1px solid $color-border-light;
+  padding: 16px 24px;
+
+  &--header {
+    @include flexJustifyStart;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  &--logo {
+    width: 16px;
+    height: 16px;
+  }
+  &--heading {
+    color: $color-primary;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px; /* 175% */
+    padding-left: 8px;
+  }
 }
