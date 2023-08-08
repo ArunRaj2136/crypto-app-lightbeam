@@ -10,7 +10,7 @@ function App() {
   const [cryptos, setCryptos] = useState<ListCardData[]>([]);
   const [cryptos2, setCryptos2] = useState<ListCardData[]>([]);
   const [userEnteredTerm, setUserEnteredTerm] = useState<string>("");
-  const [selectedID, setSelectedID] = useState<string>("");
+  const [selectedID, setSelectedID] = useState("bitcoin");
 
   const fetchCryptoData = async () => {
     try {

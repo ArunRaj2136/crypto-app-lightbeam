@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "./index.scss";
 import { MyContext } from "../../context/context";
 import axios from "axios";
+import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 
 function Card() {
   const { selectedID } = useContext(MyContext);
@@ -67,6 +68,12 @@ function Card() {
                 2
               )}
               )
+              {cryptoData?.market_data?.price_change_percentage_24h_in_currency
+                ?.inr > 0 ? (
+                <AiFillCaretUp />
+              ) : (
+                <AiFillCaretDown />
+              )}
             </span>
             {/* icon */}
           </div>
@@ -75,11 +82,11 @@ function Card() {
         <div className="card__data--amount">
           <div className="card__data--amount-buy">
             <div className="card__data--amount-value">4324.75</div>
-            <h5 className="card__data--amount-text">BUY</h5>
+            <h5 className="card__data--amount-text">buy</h5>
           </div>
           <div className="card__data--amount-sell">
             <div className="card__data--amount-value">4668.93</div>
-            <h5 className="card__data--amount-text">SELL</h5>
+            <h5 className="card__data--amount-text">sell</h5>
           </div>
         </div>
       </div>

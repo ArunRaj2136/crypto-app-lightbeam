@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./index.scss";
 import ListCard from "../listCard/ListCard";
 import { ListCardData } from "../../types/types";
-//
+import { AiOutlineLeft } from "react-icons/ai";
 
 interface SidebarProps {
   cryptos: ListCardData[];
@@ -18,7 +18,7 @@ const Sidebar = ({
   return (
     <div className="sidebar__container">
       <div className="sidebar__container--header">
-        <img src="" alt="left arrow" className="sidebar__container--logo" />
+        <AiOutlineLeft />
         <h2 className="sidebar__container--heading">
           Cryptos {cryptos?.length}
         </h2>
