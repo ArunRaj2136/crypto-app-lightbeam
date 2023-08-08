@@ -1,0 +1,34 @@
+@import "../../sass/base/variables";
+@import "../../sass/base/mixins";
+
+.listcard {
+  width: 100%;
+  height: 74px;
+  background-color: $color-white;
+  border-top: 1px solid $color-border-light;
+  border-bottom: 1px solid $color-border-light;
+  padding: 17px 0;
+  @include flexJustifyStart;
+
+  &__img {
+    margin-right: 8px;
+    height: 12px;
+    width: 12px;
+  }
+  &__data--heading {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    &-name {
+      color: $color-primary;
+      margin-bottom: 8px;
+    }
+    &-description {
+      color: $color-text-help;
+    }
+  }
+  &:hover {
+    background-color: rgba($color-primary-light, 0.25);
+  }
+}

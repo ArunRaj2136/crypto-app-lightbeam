@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.scss";
+import Card from "./../card/Card";
 
 function MainContent() {
   return (
@@ -8,7 +9,8 @@ function MainContent() {
         <img src="" alt="" className="main__container--logo" />
         <h1 className="main__container--heading"> My Cryptos</h1>
       </header>
-      {/* component to show card */} card
+      {/* component to show card */}
+      <Card />
     </div>
   );
 }

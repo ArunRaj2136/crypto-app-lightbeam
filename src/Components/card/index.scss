@@ -1,0 +1,52 @@
+@import "../../sass/base/variables";
+@import "../../sass/base/mixins";
+
+.card {
+  width: 301px;
+  height: 213px;
+  border-radius: 4.556px;
+  border: 1px solid $color-border-light;
+  background-color: $color-gray-025;
+  padding: 24px 26px 24px 24px;
+  display: flex;
+  &__data {
+    &--heading {
+      width: 54px;
+      height: 42px;
+      margin-bottom: 16px;
+    }
+    &--stock {
+      color: $color-success;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 600;
+      //   line-height: 24px; /* 133.333% */
+      &-value {
+        margin-bottom: 6px;
+      }
+      &-text {
+        margin-bottom: 12px;
+        color: $color-gray-500;
+      }
+
+      border-bottom: 1px solid $color-border-light;
+    }
+    &--amount {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+      &-value {
+        color: $color-primary;
+      }
+      &-text {
+        color: $color-gray-500;
+      }
+
+      &-buy {
+        border-right: 1px solid $color-border-light;
+      }
+      &-sell {
+      }
+    }
+  }
+}

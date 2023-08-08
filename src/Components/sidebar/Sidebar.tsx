@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./index.scss";
+import ListCard from "../listCard/ListCard";
 //
 
 const Sidebar = () => {
@@ -21,7 +22,7 @@ const Sidebar = () => {
         />
       </div>
       {/* List Card Component */}
-      CARD
+      <ListCard />
     </div>
   );
 };
