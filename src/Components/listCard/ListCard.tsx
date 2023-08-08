@@ -1,15 +1,22 @@
 import React from "react";
 import "./index.scss";
+import { ListCardData } from "../../types/types";
 
-function ListCard() {
+interface ListCardProps {
+  item: ListCardData;
+}
+
+function ListCard({ item }: ListCardProps) {
   return (
     <div className="listcard">
       <div className="listcard__img">
-        <img src="" alt="logo" />
+        <img src={item?.image} alt="logo" />
       </div>
       <div className="listcard__data--heading">
-        <h5 className="listcard__data--heading-description">BTC</h5>
-        <h2 className="listcard__data--heading-name">Bitcoin</h2>
+        <p className="listcard__data--heading-description">
+          {item?.symbol.toUpperCase()}
+        </p>
+        <p className="listcard__data--heading-name">{item?.name}</p>
       </div>
     </div>
   );

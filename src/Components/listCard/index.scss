@@ -12,8 +12,11 @@
 
   &__img {
     margin-right: 8px;
-    height: 12px;
-    width: 12px;
+
+    img {
+      height: 12px;
+      width: 12px;
+    }
   }
   &__data--heading {
     font-size: 12px;
@@ -30,5 +33,6 @@
   }
   &:hover {
     background-color: rgba($color-primary-light, 0.25);
+    cursor: pointer;
   }
 }
