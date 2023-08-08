@@ -15,3 +15,8 @@
   flex-direction: row;
   justify-content: start;
 }
+@mixin flexJustifyAlignCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

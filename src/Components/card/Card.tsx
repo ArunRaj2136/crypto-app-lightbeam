@@ -1,19 +1,76 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./index.scss";
+import { MyContext } from "../../context/context";
+import axios from "axios";
 
 function Card() {
-  return (
+  const { selectedID } = useContext(MyContext);
+  const [cryptoData, setCryptoData] = useState<any>(null);
+
+  const fetchCryptoData = async () => {
+    try {
+      const response = await axios.get(
+        `https://api.coingecko.com/api/v3/coins/${selectedID}`
+      );
+      console.log("coin", response);
+      setCryptoData(response?.data);
+      // const formattedData = response?.data.map((item: any) => {
+      //   return {
+      //     name: item?.name,
+      //     symbol: item?.symbol,
+      //     id: item?.id,
+      //     image: item?.image?.large,
+      //     price_change_24h: item?.price_change_24h_in_currency?.inr,
+      //   };
+      // });
+    } catch (error: any) {
+      throw new Error(error);
+    }
+  };
+
+  useEffect(() => {
+    selectedID && fetchCryptoData();
+  }, [selectedID]);
+
+  return cryptoData ? (
     <div className="card">
       <div className="card__img">
-        <img src="" alt="logo" />
+        <img src={cryptoData?.image?.thumb} alt="logo" />
       </div>
       <div className="card__data">
         <div className="card__data--heading">
-          <h2>Bitcoin</h2>
-          <h5>BTC</h5>
+          <h2>{cryptoData?.name}</h2>
+          <h5>{cryptoData?.symbol.toUpperCase()}</h5>
         </div>
         <div className="card__data--stock">
-          <div className="card__data--stock-value">2280.66(5.19%) &gt;</div>
+          <div className="card__data--stock-value">
+            <span
+              className={
+                cryptoData?.market_data?.price_change_24h_in_currency?.inr > 0
+                  ? `col-green price--change`
+                  : `col-red price--change`
+              }
+            >
+              {cryptoData?.market_data?.price_change_24h_in_currency?.inr.toFixed(
+                4
+              )}
+            </span>
+            <span
+              className={
+                cryptoData?.market_data?.price_change_percentage_24h_in_currency
+                  ?.inr > 0
+                  ? `col-green percentage--change`
+                  : `col-red percentage--change`
+              }
+            >
+              (
+              {cryptoData?.market_data?.price_change_percentage_24h_in_currency?.inr.toFixed(
+                2
+              )}
+              )
+            </span>
+            {/* icon */}
+          </div>
           <h5 className="card__data--stock-text">CHANGE</h5>
         </div>
         <div className="card__data--amount">
@@ -28,6 +85,8 @@ function Card() {
         </div>
       </div>
     </div>
+  ) : (
+    <h1>loading</h1>
   );
 }
 

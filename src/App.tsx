@@ -4,9 +4,11 @@ import "./App.scss";
 import Sidebar from "./Components/sidebar/Sidebar";
 import MainContent from "./Components/mainContent/MainContent";
 import { ListCardData } from "./types/types";
+import { MyContext } from "./context/context";
 
 function App() {
   const [cryptos, setCryptos] = useState<ListCardData[]>([]);
+  const [selectedID, setSelectedID] = useState<string>("");
 
   const fetchCryptoData = async () => {
     try {
@@ -38,10 +40,12 @@ function App() {
   }, []);
 
   return (
-    <div className="container">
-      <Sidebar cryptos={cryptos} />
-      <MainContent />
-    </div>
+    <MyContext.Provider value={{ selectedID, setSelectedID }}>
+      <div className="container">
+        <Sidebar cryptos={cryptos} />
+        <MainContent />
+      </div>
+    </MyContext.Provider>
   );
 }
 
