@@ -14,15 +14,6 @@ function Card() {
         `https://api.coingecko.com/api/v3/coins/${selectedID}`
       );
       setCryptoData(response?.data);
-      // const formattedData = response?.data.map((item: any) => {
-      //   return {
-      //     name: item?.name,
-      //     symbol: item?.symbol,
-      //     id: item?.id,
-      //     image: item?.image?.large,
-      //     price_change_24h: item?.price_change_24h_in_currency?.inr,
-      //   };
-      // });
     } catch (error: any) {
       throw new Error(error);
     }
@@ -75,7 +66,6 @@ function Card() {
                 <AiFillCaretDown />
               )}
             </span>
-            {/* icon */}
           </div>
           <h5 className="card__data--stock-text">CHANGE</h5>
         </div>
