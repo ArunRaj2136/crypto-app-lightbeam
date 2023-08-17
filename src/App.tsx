@@ -5,8 +5,15 @@ import Sidebar from "./Components/sidebar/Sidebar";
 import MainContent from "./Components/mainContent/MainContent";
 import { ListCardData } from "./types/types";
 import { MyContext } from "./context/context";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllCryptocurrencies } from "./store/CryptocurrencySlice";
+import { RootState } from "./store/store";
 
 function App() {
+  const dispatch = useDispatch();
+  const { allCryptocurrencies, userSelectedID } = useSelector(
+    (state: RootState) => state?.crpytocurrency
+  );
   const [cryptos, setCryptos] = useState<ListCardData[]>([]);
   const [cryptos2, setCryptos2] = useState<ListCardData[]>([]);
   const [userEnteredTerm, setUserEnteredTerm] = useState<string>("");
@@ -32,6 +39,7 @@ function App() {
         };
       });
       setCryptos(formattedData);
+      dispatch(fetchAllCryptocurrencies(formattedData));
     } catch (error: any) {
       throw new Error(error);
     }

@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./CounterSlice";
+import crpytocurrencyReducer from "./CryptocurrencySlice";
 
 const store = configureStore({
   reducer: {
-    counter: counterReducer, // Add more reducers here
+    crpytocurrency: crpytocurrencyReducer, // Add more reducers here
   },
 });
 
