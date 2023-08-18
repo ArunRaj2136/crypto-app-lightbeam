@@ -1,17 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.scss";
-import { MyContext } from "../../context/context";
 import axios from "axios";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 function Card() {
-  const { selectedID } = useContext(MyContext);
+  const { userSelectedID } = useSelector(
+    (state: RootState) => state?.crpytocurrency
+  );
   const [cryptoData, setCryptoData] = useState<any>(null);
 
   const fetchCryptoData = async () => {
     try {
       const response = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/${selectedID}`
+        `https://api.coingecko.com/api/v3/coins/${userSelectedID}`
       );
       setCryptoData(response?.data);
     } catch (error: any) {
@@ -20,8 +23,8 @@ function Card() {
   };
 
   useEffect(() => {
-    selectedID && fetchCryptoData();
-  }, [selectedID]);
+    userSelectedID && fetchCryptoData();
+  }, [userSelectedID]);
 
   return cryptoData ? (
     <div className="card">
@@ -43,7 +46,7 @@ function Card() {
               }
             >
               {cryptoData?.market_data?.price_change_24h_in_currency?.inr.toFixed(
-                4
+                2
               )}
             </span>
             <span

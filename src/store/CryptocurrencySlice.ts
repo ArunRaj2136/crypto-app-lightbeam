@@ -4,11 +4,13 @@ import { ListCardData } from "../types/types";
 interface CryptocurrencyState {
   allCryptocurrencies: ListCardData[];
   userSelectedID: string;
+  searchedCryptocurrencies: ListCardData[];
 }
 
 const initialState: CryptocurrencyState = {
   allCryptocurrencies: [],
   userSelectedID: "bitcoin",
+  searchedCryptocurrencies: [],
 };
 
 const CryptocurrencySlice = createSlice({
@@ -21,9 +23,15 @@ const CryptocurrencySlice = createSlice({
     updateUserSelectedID: (state, action) => {
       state.userSelectedID = action?.payload;
     },
+    updateSearchedCryptocurrencies: (state, action) => {
+      state.searchedCryptocurrencies = action?.payload;
+    },
   },
 });
 
-export const { fetchAllCryptocurrencies, updateUserSelectedID } =
-  CryptocurrencySlice.actions;
+export const {
+  fetchAllCryptocurrencies,
+  updateUserSelectedID,
+  updateSearchedCryptocurrencies,
+} = CryptocurrencySlice.actions;
 export default CryptocurrencySlice.reducer;

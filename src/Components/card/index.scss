@@ -15,7 +15,7 @@
     width: 60px !important;
     border-radius: 50%;
     margin-right: 12px;
-    background-color: rgb(41, 37, 31);
+    background-color: rgba(41, 37, 31, 0.2);
     @include flexJustifyAlignCenter;
     img {
       height: 24px;

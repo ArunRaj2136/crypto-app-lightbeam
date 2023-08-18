@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./index.scss";
 import { ListCardData } from "../../types/types";
-import { MyContext } from "../../context/context";
 import { useDispatch } from "react-redux";
 import { updateUserSelectedID } from "../../store/CryptocurrencySlice";
 
@@ -11,10 +10,8 @@ interface ListCardProps {
 
 function ListCard({ item }: ListCardProps) {
   const dispatch = useDispatch();
-  const { selectedID, setSelectedID } = useContext(MyContext);
 
   const handleClickItem = (id: string) => {
-    setSelectedID(id);
     dispatch(updateUserSelectedID(id));
   };
   return (
